@@ -1,0 +1,13 @@
+type Payment implements Node {
+    id: Int!
+    amount: Int!
+    method: String!
+    createdAt: DateTime!
+    updatedAt: DateTime!
+    admission: Admission!
+}
+
+type PaymentList implements PaginatedList {
+    items: [Payment!]!
+    totalItems: Int!
+}

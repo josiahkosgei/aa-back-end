@@ -1,0 +1,87 @@
+# Third-party custom scalars
+scalar JSON
+scalar DateTime
+scalar Upload
+
+interface PaginatedList {
+    items: [Node!]!
+    totalItems: Int!
+}
+
+interface Node {
+    id: Int!
+}
+
+input StringOperators {
+    eq: String
+    notEq: String
+    contains: String
+    notContains: String
+    in: [String!]
+    notIn: [String!]
+    regex: String
+}
+
+input BooleanOperators {
+    eq: Boolean
+}
+
+input NumberRange {
+    start: Float!
+    end: Float!
+}
+
+input NumberOperators {
+    eq: Float
+    lt: Float
+    lte: Float
+    gt: Float
+    gte: Float
+    between: NumberRange
+}
+
+input DateRange {
+    start: DateTime!
+    end: DateTime!
+}
+
+input DateOperators {
+    eq: DateTime
+    before: DateTime
+    after: DateTime
+    between: DateRange
+}
+
+interface ErrorResult {
+    errorCode: ErrorCode!
+    message: String!
+}
+
+type DeletionResponse {
+    result: DeletionResult!
+    message: String
+}
+
+enum DeletionResult {
+    "The entity was successfully deleted"
+    DELETED
+    "Deletion did not take place, reason given in message"
+    NOT_DELETED
+}
+
+enum SortOrder {
+    ASC
+    DESC
+}
+
+enum LogicalOperator {
+    AND
+    OR
+}
+
+type Success {
+    success: Boolean!
+}
+enum ErrorCode {
+    UNKNOWN_ERROR
+}

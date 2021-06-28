@@ -1,0 +1,13 @@
+type Hospital implements Node {
+    id: Int!
+    name: String!
+    createdAt: DateTime!
+    updatedAt: DateTime!
+    hospitalComplaints: [Complaint!]!
+    admissions: [Admission!]!
+}
+
+type HospitalList implements PaginatedList {
+    items: [Hospital!]!
+    totalItems: Int!
+}

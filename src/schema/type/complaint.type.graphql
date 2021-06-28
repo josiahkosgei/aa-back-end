@@ -1,0 +1,15 @@
+type Complaint implements Node {
+    id: Int!
+    description: String!
+    category: String!
+    state: String!
+    createdAt: DateTime!
+    updatedAt: DateTime!
+    assignedUser: User!
+    hospital: Hospital!
+}
+
+type ComplaintList implements PaginatedList {
+    items: [Complaint!]!
+    totalItems: Int!
+}

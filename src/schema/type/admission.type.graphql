@@ -1,0 +1,13 @@
+type Admission implements Node {
+    id: Int!
+    name: String!
+    createdAt: DateTime!
+    updatedAt: DateTime!
+    hospital: Hospital!
+    payments: Payment!
+}
+
+type AdmissionList implements PaginatedList {
+    items: [Admission!]!
+    totalItems: Int!
+}
