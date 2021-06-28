@@ -34,6 +34,9 @@ export class Database {
         name: 'default',
         type: 'postgres',
         url: process.env.DATABASE_URL,
+        ssl: {
+          rejectUnauthorized: false,
+        },
         entities: [...entities],
         synchronize: false,
         migrations: [__dirname + '/migrations/**/*.ts'],
