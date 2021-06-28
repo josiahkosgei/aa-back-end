@@ -51,6 +51,7 @@ const entities = [Complaint, Hospital, User, Payment, Admission];
       apiType: 'api',
       apiPath: 'api',
       playground: true,
+      introspection: true,
       debug: false,
       typePaths: ['./**/*.graphql'],
     })),

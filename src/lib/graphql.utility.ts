@@ -35,6 +35,7 @@ export interface GraphQLApiOptions {
   typePaths: string[];
   apiPath: string;
   debug: boolean;
+  introspection: boolean;
   playground: boolean | any;
 }
 
@@ -59,6 +60,7 @@ async function buildGraphQLOptions(
     resolvers: buildResolvers(),
     playground: options.playground || false,
     debug: options.debug || false,
+    introspection: options.introspection,
     context: (req: any) => req,
     cors: false,
     plugins: [],
