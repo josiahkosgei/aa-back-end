@@ -35,6 +35,7 @@ export class UserService {
   async create(input: CreateUserInput): Promise<User> {
     const user = new User(input);
     user.createdAt = new Date();
+    user.updatedAt = new Date();
     const newUser = await this.connection.getRepository(User).save(user);
     return this.findOne(newUser.id);
   }

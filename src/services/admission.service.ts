@@ -37,6 +37,7 @@ export class AdmissionService {
   async create(input: CreateAdmissionInput): Promise<Admission> {
     const admission = new Admission(input);
     admission.createdAt = new Date();
+    admission.updatedAt = new Date();
     const newAdmission = await this.connection
       .getRepository(Admission)
       .save(admission);

@@ -37,6 +37,7 @@ export class PaymentService {
   async create(input: CreatePaymentInput): Promise<Payment> {
     const payment = new Payment(input);
     payment.createdAt = new Date();
+    payment.updatedAt = new Date();
     const newPayment = await this.connection
       .getRepository(Payment)
       .save(payment);

@@ -37,6 +37,7 @@ export class HospitalService {
   async create(input: CreateHospitalInput): Promise<Hospital> {
     const hospital = new Hospital(input);
     hospital.createdAt = new Date();
+    hospital.updatedAt = new Date();
     const newHospital = await this.connection
       .getRepository(Hospital)
       .save(hospital);

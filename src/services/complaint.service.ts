@@ -37,6 +37,8 @@ export class ComplaintService {
 
   async create(input: ReportComplaintInput): Promise<Complaint> {
     const complaint = new Complaint({
+      createdAt: `${new Date()}`,
+      updatedAt: `${new Date()}`,
       description: input.description,
       category: input.category as ComplaintCategory,
     });
