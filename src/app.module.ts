@@ -59,6 +59,7 @@ const entities = [Complaint, Hospital, User, Payment, Admission];
       name: 'default',
       type: 'postgres',
       url: process.env.DATABASE_URL,
+      ssl: true,
       entities: [...entities],
       synchronize: true,
       migrations: [__dirname + '/migrations/**/*.ts'],
