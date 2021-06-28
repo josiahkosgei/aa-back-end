@@ -51,9 +51,8 @@ const entities = [Complaint, Hospital, User, Payment, Admission];
       apiType: 'api',
       apiPath: 'api',
       playground: true,
-      debug: true,
+      debug: false,
       typePaths: ['./**/*.graphql'],
-      // path: join(process.cwd(), 'src/api-graphql.ts'),
     })),
     TypeOrmModule.forRoot({
       name: 'default',
