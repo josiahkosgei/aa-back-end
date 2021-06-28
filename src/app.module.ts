@@ -65,7 +65,7 @@ const entities = [Complaint, Hospital, User, Payment, Admission];
       synchronize: true,
       migrations: [__dirname + '/migrations/**/*.ts'],
       migrationsTableName: 'migrations_typeorm',
-      // migrationsRun: true,
+      migrationsRun: true,
     }),
   ],
   providers: [...services, ...apiResolvers, ...entitiesResolvers],
