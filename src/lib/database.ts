@@ -41,7 +41,6 @@ export class Database {
         synchronize: false,
         migrations: [__dirname + '/migrations/**/*.ts'],
         migrationsTableName: 'migrations_typeorm',
-        // migrationsRun: buil,
       };
       connection = await createConnection(connectionOptions);
     }

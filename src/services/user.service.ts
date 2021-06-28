@@ -34,13 +34,14 @@ export class UserService {
 
   async create(input: CreateUserInput): Promise<User> {
     const user = new User(input);
-
+    user.createdAt = new Date();
     const newUser = await this.connection.getRepository(User).save(user);
     return this.findOne(newUser.id);
   }
 
   async update(input: UpdateUserInput): Promise<User> {
     const user = await this.findOne(input.id);
+    user.updatedAt = new Date();
     if (!user) {
       throw new EntityNotFoundError('User', input.id);
     }

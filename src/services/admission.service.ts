@@ -36,6 +36,7 @@ export class AdmissionService {
 
   async create(input: CreateAdmissionInput): Promise<Admission> {
     const admission = new Admission(input);
+    admission.createdAt = new Date();
     const newAdmission = await this.connection
       .getRepository(Admission)
       .save(admission);
@@ -44,6 +45,8 @@ export class AdmissionService {
 
   async update(input: UpdateAdmissionInput): Promise<Admission> {
     const admission = await this.findOne(input.id);
+    admission.updatedAt = new Date();
+
     if (!admission) {
       throw new EntityNotFoundError('Admission', input.id);
     }

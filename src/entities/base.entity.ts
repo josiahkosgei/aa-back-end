@@ -1,4 +1,5 @@
 import { DeepPartial } from '../lib/common-types';
+import { Column } from 'typeorm';
 import {
   CreateDateColumn,
   UpdateDateColumn,
@@ -19,7 +20,10 @@ export abstract class BaseEntity {
     }
   }
   @PrimaryGeneratedColumn() id: number;
-  //  @Column({ nullable: true })
-  @CreateDateColumn() createdAt: Date;
-  @UpdateDateColumn() updatedAt: Date;
+  @Column({ nullable: true })
+  // @CreateDateColumn()
+  createdAt: Date;
+  // @UpdateDateColumn()
+  @Column({ nullable: true })
+  updatedAt: Date;
 }

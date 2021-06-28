@@ -36,7 +36,7 @@ export class HospitalService {
 
   async create(input: CreateHospitalInput): Promise<Hospital> {
     const hospital = new Hospital(input);
-    console.log('hospital', hospital);
+    hospital.createdAt = new Date();
     const newHospital = await this.connection
       .getRepository(Hospital)
       .save(hospital);
@@ -45,6 +45,8 @@ export class HospitalService {
 
   async update(input: UpdateHospitalInput): Promise<Hospital> {
     const hospital = await this.findOne(input.id);
+    hospital.updatedAt = new Date();
+
     if (!hospital) {
       throw new EntityNotFoundError('Hospital', input.id);
     }

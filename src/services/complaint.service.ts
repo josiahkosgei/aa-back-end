@@ -66,6 +66,8 @@ export class ComplaintService {
 
   async update(input: UpdateComplaintInput): Promise<Complaint> {
     const complaint = await this.findOne(input.id);
+    complaint.updatedAt = new Date();
+
     if (!complaint) {
       throw new EntityNotFoundError('Complaint', input.id);
     }

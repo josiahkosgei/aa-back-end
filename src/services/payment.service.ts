@@ -36,6 +36,7 @@ export class PaymentService {
 
   async create(input: CreatePaymentInput): Promise<Payment> {
     const payment = new Payment(input);
+    payment.createdAt = new Date();
     const newPayment = await this.connection
       .getRepository(Payment)
       .save(payment);
@@ -44,6 +45,7 @@ export class PaymentService {
 
   async update(input: UpdatePaymentInput): Promise<Payment> {
     const payment = await this.findOne(input.id);
+    payment.updatedAt = new Date();
     if (!payment) {
       throw new EntityNotFoundError('Payment', input.id);
     }
