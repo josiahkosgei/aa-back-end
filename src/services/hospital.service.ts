@@ -40,7 +40,7 @@ export class HospitalService {
       .addSelect('hospital.name', 'name')
       .addSelect('COUNT(DISTINCT(admissions.id))', 'admissionscount')
       .groupBy('hospital.id')
-      .orderBy({ admissionscount: 'DESC' })
+      .orderBy({ admissionscount: 'ASC' })
       .getRawMany();
 
     return stats;

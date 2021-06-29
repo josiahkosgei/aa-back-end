@@ -62,7 +62,9 @@ async function buildGraphQLOptions(
     debug: options.debug || false,
     introspection: options.introspection,
     context: (req: any) => req,
-    cors: false,
+    cors: {
+      origin: 'http://localhost:3000',
+    },
     plugins: [],
   } as GqlModuleOptions;
 
