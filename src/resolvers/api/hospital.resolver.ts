@@ -24,6 +24,13 @@ export class HospitalResolver {
   }
 
   @Query()
+  hospitalsWithStats(
+    @Args() args: QueryHospitalsArgs,
+  ): Promise<PaginatedList<Hospital>> {
+    return this.hospitalService.findAllWithStats(args.options || undefined);
+  }
+
+  @Query()
   async hospital(@Args('id') id: number): Promise<Hospital | undefined> {
     return this.hospitalService.findOne(id);
   }
