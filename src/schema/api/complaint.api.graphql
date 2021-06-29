@@ -1,5 +1,6 @@
 type Query {
   complaints(options: ComplaintListOptions): ComplaintList!
+  keyComplaintsStats(options: ComplaintListOptions): Complaint!
   complaint(id: Int!): Complaint
 }
 

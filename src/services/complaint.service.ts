@@ -12,6 +12,7 @@ import {
 import { patchEntity } from '../lib/patch-entity';
 import { ComplaintCategory } from '../entities/complaint-category';
 import { AssignComplaintToUserInput } from '../graphql-types';
+import { KeyComplaintsStats } from '../resolvers/dto/compliants-stats';
 
 @Injectable()
 export class ComplaintService {
@@ -29,6 +30,25 @@ export class ComplaintService {
       }));
   }
 
+  getKeyComplaintsStats(): Promise<Array<KeyComplaintsStats>> {
+    return this.connection
+      .getRepository(Complaint)
+      .query(
+        `;With Groups as (
+        select category,"complaint"."hospitalId" ,COUNT(*) as categoryCount from complaint group by category,"complaint"."hospitalId"
+    ), complaint as (
+        select "category","hospitalId",categoryCount,
+           ROW_NUMBER() OVER (PARTITION BY category ORDER BY categoryCount desc) as rn,
+           COUNT(*) OVER (PARTITION BY category) as multi
+        from Groups
+    )
+    select category,"hospitalId",h.name, categoryCount
+    from complaint
+    inner join "hospital" h on h.id="hospitalId"
+    where rn = 1 and multi > 1`,
+      )
+      .then((vals: KeyComplaintsStats[]) => vals);
+  }
   findOne(complaintId: number): Promise<Complaint | undefined> {
     return this.connection.getRepository(Complaint).findOne(complaintId, {
       relations: ['assignedUser', 'hospital'],

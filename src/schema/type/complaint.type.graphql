@@ -8,6 +8,12 @@ type Complaint implements Node {
     assignedUser: User!
     hospital: Hospital!
 }
+type Complaint {
+    hospitalId: Int!
+    categoryCount: Int!
+    name: String!
+    category: String!
+}
 
 type ComplaintList implements PaginatedList {
     items: [Complaint!]!

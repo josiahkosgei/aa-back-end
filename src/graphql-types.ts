@@ -159,6 +159,8 @@ export abstract class IQuery {
 
     abstract complaints(options?: ComplaintListOptions): ComplaintList | Promise<ComplaintList>;
 
+    abstract keyComplaintsStats(options?: ComplaintListOptions): Complaint | Promise<Complaint>;
+
     abstract complaint(id: number): Complaint | Promise<Complaint>;
 
     abstract hospitals(options?: HospitalListOptions): HospitalList | Promise<HospitalList>;
@@ -242,6 +244,9 @@ export class Complaint implements Node {
     updatedAt: DateTime;
     assignedUser: User;
     hospital: Hospital;
+    hospitalId: number;
+    categoryCount: number;
+    name: string;
 }
 
 export class ComplaintList implements PaginatedList {

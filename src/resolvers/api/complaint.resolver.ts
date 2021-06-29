@@ -9,6 +9,7 @@ import {
 } from '../../lib/common-types';
 import { DeletionResponse } from '../../graphql-types';
 import { MutationAssignComplaintToUserArgs } from '../../lib/common-types';
+import { KeyComplaintsStats } from '../dto/compliants-stats';
 
 @Resolver('Complaint')
 export class ComplaintResolver {
@@ -17,6 +18,11 @@ export class ComplaintResolver {
   @Query()
   complaints(): Promise<PaginatedList<Complaint>> {
     return this.complaintService.findAll();
+  }
+
+  @Query()
+  keyComplaintsStats(): Promise<Array<KeyComplaintsStats>> {
+    return this.complaintService.getKeyComplaintsStats();
   }
 
   @Query()
