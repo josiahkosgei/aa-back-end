@@ -22,7 +22,7 @@ export class ComplaintService {
     return this.connection
       .getRepository(Complaint)
       .findAndCount({
-        relations: ['assignedUser', 'hospital', 'customer_response'],
+        relations: ['assignedUser', 'hospital', 'customerResponse'],
       })
       .then(([items, totalItems]) => ({
         items,
@@ -51,7 +51,7 @@ export class ComplaintService {
   }
   findOne(complaintId: number): Promise<Complaint | undefined> {
     return this.connection.getRepository(Complaint).findOne(complaintId, {
-      relations: ['assignedUser', 'hospital', 'customer_response'],
+      relations: ['assignedUser', 'hospital', 'customerResponse'],
     });
   }
 

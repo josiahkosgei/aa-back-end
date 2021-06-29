@@ -22,6 +22,7 @@ import {
 } from './resolvers/entity';
 import { CustomerResponseEntityResolver } from './resolvers/entity/customer-response.entity.resolver';
 import { CustomerResponseService } from './services/customer-response.service';
+import { CustomerResponse } from './entities/customer-response.entity';
 
 const apiResolvers = [
   ComplaintResolver,
@@ -49,7 +50,14 @@ const services = [
   PaymentService,
   CustomerResponseService,
 ];
-const entities = [Complaint, Hospital, User, Payment, Admission];
+const entities = [
+  Complaint,
+  Hospital,
+  User,
+  Payment,
+  Admission,
+  CustomerResponse,
+];
 
 @Module({
   imports: [
