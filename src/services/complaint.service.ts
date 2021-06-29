@@ -30,8 +30,8 @@ export class ComplaintService {
       }));
   }
 
-  getKeyComplaintsStats(): Promise<Array<KeyComplaintsStats>> {
-    return this.connection
+  async getKeyComplaintsStats(): Promise<Array<KeyComplaintsStats>> {
+    const result: KeyComplaintsStats[] = await this.connection
       .getRepository(Complaint)
       .query(
         `;With Groups as (
@@ -46,8 +46,8 @@ export class ComplaintService {
     from complaint
     inner join "hospital" h on h.id="hospitalId"
     where rn = 1 and multi > 1`,
-      )
-      .then((vals: KeyComplaintsStats[]) => vals);
+      );
+    return result;
   }
   findOne(complaintId: number): Promise<Complaint | undefined> {
     return this.connection.getRepository(Complaint).findOne(complaintId, {

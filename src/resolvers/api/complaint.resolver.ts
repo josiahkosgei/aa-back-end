@@ -21,8 +21,8 @@ export class ComplaintResolver {
   }
 
   @Query()
-  keyComplaintsStats(): Promise<Array<KeyComplaintsStats>> {
-    return this.complaintService.getKeyComplaintsStats();
+  async keyComplaintsStats(): Promise<Array<KeyComplaintsStats>> {
+    return await this.complaintService.getKeyComplaintsStats();
   }
 
   @Query()

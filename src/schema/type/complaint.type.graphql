@@ -8,7 +8,7 @@ type Complaint implements Node {
     assignedUser: User!
     hospital: Hospital!
 }
-type Complaint {
+type KeyComplaintsStats {
     hospitalId: Int!
     categoryCount: Int!
     name: String!
