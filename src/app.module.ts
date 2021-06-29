@@ -15,10 +15,13 @@ import { AdmissionResolver } from './resolvers/api/admission.resolver';
 import { PaymentEntityResolver } from './resolvers/entity/payment.entity.resolver';
 import { AdmissionService } from './services/admission.service';
 import { PaymentService } from './services/payment.service';
+import { CustomerResponseResolver } from './resolvers/api/customer-response.resolver';
 import {
   HospitalEntityResolver,
   ComplaintEntityResolver,
 } from './resolvers/entity';
+import { CustomerResponseEntityResolver } from './resolvers/entity/customer-response.entity.resolver';
+import { CustomerResponseService } from './services/customer-response.service';
 
 const apiResolvers = [
   ComplaintResolver,
@@ -26,6 +29,7 @@ const apiResolvers = [
   UserResolver,
   AdmissionResolver,
   PaymentResolver,
+  CustomerResponseResolver,
 ];
 
 const entitiesResolvers = [
@@ -34,6 +38,7 @@ const entitiesResolvers = [
   AdmissionEntityResolver,
   UserEntityResolver,
   PaymentEntityResolver,
+  CustomerResponseEntityResolver,
 ];
 
 const services = [
@@ -42,6 +47,7 @@ const services = [
   UserService,
   AdmissionService,
   PaymentService,
+  CustomerResponseService,
 ];
 const entities = [Complaint, Hospital, User, Payment, Admission];
 
