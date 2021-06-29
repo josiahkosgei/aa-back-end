@@ -22,7 +22,7 @@ export class ComplaintService {
     return this.connection
       .getRepository(Complaint)
       .findAndCount({
-        relations: ['assignedUser', 'hospital'],
+        relations: ['assignedUser', 'hospital', 'customer_response'],
       })
       .then(([items, totalItems]) => ({
         items,
@@ -35,14 +35,14 @@ export class ComplaintService {
       .getRepository(Complaint)
       .query(
         `;With Groups as (
-        select category,"complaint"."hospitalId" ,COUNT(*) as categoryCount from complaint group by category,"complaint"."hospitalId"
+        select category,"complaint"."hospitalId" ,COUNT(*) as categorycount from complaint group by category,"complaint"."hospitalId"
     ), complaint as (
-        select "category","hospitalId",categoryCount,
-           ROW_NUMBER() OVER (PARTITION BY category ORDER BY categoryCount desc) as rn,
+        select "category","hospitalId",categorycount,
+           ROW_NUMBER() OVER (PARTITION BY category ORDER BY categorycount desc) as rn,
            COUNT(*) OVER (PARTITION BY category) as multi
         from Groups
     )
-    select category,"hospitalId",h.name, categoryCount
+    select category,"hospitalId",h.name, categorycount
     from complaint
     inner join "hospital" h on h.id="hospitalId"
     where rn = 1 and multi > 1`,
@@ -51,7 +51,7 @@ export class ComplaintService {
   }
   findOne(complaintId: number): Promise<Complaint | undefined> {
     return this.connection.getRepository(Complaint).findOne(complaintId, {
-      relations: ['assignedUser', 'hospital'],
+      relations: ['assignedUser', 'hospital', 'customer_response'],
     });
   }
 

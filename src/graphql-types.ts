@@ -1,4 +1,3 @@
-
 /*
  * ------------------------------------------------------
  * THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
@@ -58,6 +57,14 @@ export class UpdateComplaintInput {
     category: string;
     assignedUserId: number;
     hospitalId: number;
+}
+
+export class CustomerResponseListOptions {
+}
+
+export class CreateCustomerResponseInput {
+    answer: number;
+    complaintId: number;
 }
 
 export class HospitalListOptions {
@@ -163,6 +170,10 @@ export abstract class IQuery {
 
     abstract complaint(id: number): Complaint | Promise<Complaint>;
 
+    abstract customerResponses(options?: CustomerResponseListOptions): CustomerResponseList | Promise<CustomerResponseList>;
+
+    abstract customerResponse(id: number): CustomerResponse | Promise<CustomerResponse>;
+
     abstract hospitals(options?: HospitalListOptions): HospitalList | Promise<HospitalList>;
 
     abstract hospitalsWithStats(options?: HospitalListOptions): HospitalStats[] | Promise<HospitalStats[]>;
@@ -192,6 +203,8 @@ export abstract class IMutation {
     abstract assignComplaintToUser(input: AssignComplaintToUserInput): Complaint | Promise<Complaint>;
 
     abstract deleteComplaint(id: number): DeletionResponse | Promise<DeletionResponse>;
+
+    abstract createCustomerResponse(input: CreateCustomerResponseInput): CustomerResponse | Promise<CustomerResponse>;
 
     abstract createHospital(input: CreateHospitalInput): Hospital | Promise<Hospital>;
 
@@ -244,17 +257,31 @@ export class Complaint implements Node {
     updatedAt: DateTime;
     assignedUser: User;
     hospital: Hospital;
+    customerResponse?: CustomerResponse;
 }
 
 export class KeyComplaintsStats {
     hospitalId: number;
-    categoryCount: number;
+    categorycount: number;
     name: string;
     category: string;
 }
 
 export class ComplaintList implements PaginatedList {
     items: Complaint[];
+    totalItems: number;
+}
+
+export class CustomerResponse implements Node {
+    id: number;
+    answer: number;
+    createdAt: DateTime;
+    updatedAt: DateTime;
+    complaint: Complaint;
+}
+
+export class CustomerResponseList implements PaginatedList {
+    items: CustomerResponse[];
     totalItems: number;
 }
 

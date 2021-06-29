@@ -1,0 +1,12 @@
+type CustomerResponse implements Node {
+    id: Int!
+    answer: Int!
+    createdAt: DateTime!
+    updatedAt: DateTime!
+    complaint: Complaint!
+}
+
+type CustomerResponseList implements PaginatedList {
+    items: [CustomerResponse!]!
+    totalItems: Int!
+}

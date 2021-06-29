@@ -8,6 +8,11 @@ import {
 } from '../graphql-types';
 import { BaseEntity } from '../entities/base.entity';
 import {
+  CustomerResponseListOptions,
+  CreateCustomerResponseInput,
+} from '../graphql-types';
+
+import {
   PaymentListOptions,
   UpdatePaymentInput,
   CreatePaymentInput,
@@ -153,4 +158,11 @@ export type MutationUpdatePaymentArgs = {
 
 export type MutationDeletePaymentArgs = {
   input: number;
+};
+
+export type QueryCustomerResponsesArgs = {
+  options?: Maybe<CustomerResponseListOptions>;
+};
+export type MutationCreateCustomerResponseArgs = {
+  input: CreateCustomerResponseInput;
 };

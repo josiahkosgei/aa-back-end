@@ -1,4 +1,4 @@
-import { ManyToOne, JoinColumn } from 'typeorm';
+import { ManyToOne, JoinColumn, OneToOne } from 'typeorm';
 import { Entity, Column } from 'typeorm';
 import { ComplaintCategory } from './complaint-category';
 import { User } from './user.entity';
@@ -6,6 +6,7 @@ import { Hospital } from './hospital.entity';
 import { BaseEntity } from './base.entity';
 import { DeepPartial } from '../lib/common-types';
 import { ComplaintState } from './complaint-state';
+import { CustomerResponse } from './customer-response.entity';
 
 /**
  * @description
@@ -42,4 +43,7 @@ export class Complaint extends BaseEntity {
   )
   @JoinColumn({ name: 'hospitalId' })
   hospital: Hospital;
+
+  @OneToOne(() => CustomerResponse, (c) => c.complaint)
+  customerResponse: CustomerResponse;
 }

@@ -7,10 +7,11 @@ type Complaint implements Node {
     updatedAt: DateTime!
     assignedUser: User!
     hospital: Hospital!
+    customerResponse: CustomerResponse
 }
 type KeyComplaintsStats {
     hospitalId: Int!
-    categoryCount: Int!
+    categorycount: Int!
     name: String!
     category: String!
 }

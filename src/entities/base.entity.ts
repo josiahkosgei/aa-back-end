@@ -21,9 +21,8 @@ export abstract class BaseEntity {
   }
   @PrimaryGeneratedColumn() id: number;
   @Column({ nullable: true })
-  // @CreateDateColumn()
   createdAt: Date;
-  // @UpdateDateColumn()
+
   @Column({ nullable: true })
   updatedAt: Date;
 }
