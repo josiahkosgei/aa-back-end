@@ -6,6 +6,11 @@ type Hospital implements Node {
     hospitalComplaints: [Complaint!]!
     admissions: [Admission!]!
 }
+type HospitalStats implements Node {
+    id: Int!
+    name: String!
+    admissionscount: Int!
+}
 
 type HospitalList implements PaginatedList {
     items: [Hospital!]!

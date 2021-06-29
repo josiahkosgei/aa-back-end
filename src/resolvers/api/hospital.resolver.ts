@@ -11,6 +11,7 @@ import {
   MutationUpdateHospitalArgs,
   QueryHospitalsArgs,
 } from '../../lib/common-types';
+import { HospitalStats } from '../dto/hospital-stats';
 
 @Resolver('Hospital')
 export class HospitalResolver {
@@ -26,7 +27,7 @@ export class HospitalResolver {
   @Query()
   hospitalsWithStats(
     @Args() args: QueryHospitalsArgs,
-  ): Promise<PaginatedList<Hospital>> {
+  ): Promise<Array<HospitalStats>> {
     return this.hospitalService.findAllWithStats(args.options || undefined);
   }
 

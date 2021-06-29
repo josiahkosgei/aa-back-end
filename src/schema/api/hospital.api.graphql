@@ -1,6 +1,6 @@
 type Query {
   hospitals(options: HospitalListOptions): HospitalList!
-  hospitalsWithStats(options: HospitalListOptions): HospitalList!
+  hospitalsWithStats(options: HospitalListOptions): [HospitalStats!]!
   hospital(id: Int!): Hospital
 }
 

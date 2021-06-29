@@ -1,3 +1,4 @@
+
 /*
  * ------------------------------------------------------
  * THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
@@ -162,6 +163,8 @@ export abstract class IQuery {
 
     abstract hospitals(options?: HospitalListOptions): HospitalList | Promise<HospitalList>;
 
+    abstract hospitalsWithStats(options?: HospitalListOptions): HospitalStats[] | Promise<HospitalStats[]>;
+
     abstract hospital(id: number): Hospital | Promise<Hospital>;
 
     abstract payments(options?: PaymentListOptions): PaymentList | Promise<PaymentList>;
@@ -253,6 +256,12 @@ export class Hospital implements Node {
     updatedAt: DateTime;
     hospitalComplaints: Complaint[];
     admissions: Admission[];
+}
+
+export class HospitalStats implements Node {
+    id: number;
+    name: string;
+    admissionscount: number;
 }
 
 export class HospitalList implements PaginatedList {

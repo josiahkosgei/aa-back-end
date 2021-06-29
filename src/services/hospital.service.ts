@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { HospitalStats } from '../resolvers/dto/hospital-stats';
 import { Connection, EntityNotFoundError } from 'typeorm';
 import { Hospital } from '../entities/hospital.entity';
 import {
@@ -30,20 +31,19 @@ export class HospitalService {
 
   async findAllWithStats(
     options?: ListQueryOptions<Hospital>,
-  ): Promise<PaginatedList<Hospital>> {
-    return await this.connection
+  ): Promise<Array<HospitalStats>> {
+    const stats = await this.connection
       .getRepository(Hospital)
       .createQueryBuilder('hospital')
       .leftJoin('hospital.admissions', 'admissions')
       .select('hospital.id', 'id')
       .addSelect('hospital.name', 'name')
-      .addSelect('COUNT(DISTINCT(admissions.id)) as admissions')
+      .addSelect('COUNT(DISTINCT(admissions.id))', 'admissionscount')
       .groupBy('hospital.id')
-      .getRawMany()
-      .then(([items, totalItems]) => ({
-        items,
-        totalItems,
-      }));
+      .orderBy({ admissionscount: 'DESC' })
+      .getRawMany();
+
+    return stats;
   }
 
   findOne(hospitalId: number): Promise<Hospital | undefined> {
