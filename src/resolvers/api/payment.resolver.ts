@@ -7,6 +7,7 @@ import {
   PaginatedList,
 } from '../../lib/common-types';
 import { Payment } from '../../entities';
+import { RevenueStats } from '../dto/revenue-stats';
 import {
   MutationUpdatePaymentArgs,
   QueryPaymentsArgs,
@@ -26,6 +27,10 @@ export class PaymentResolver {
     return this.paymentService.findOne(id);
   }
 
+  @Query()
+  async revenueStats(): Promise<Array<RevenueStats>> {
+    return await this.paymentService.getRevenueStats();
+  }
   @Mutation()
   async createPayment(
     @Args() args: MutationCreatePaymentArgs,

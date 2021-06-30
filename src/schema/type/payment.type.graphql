@@ -1,13 +1,20 @@
 type Payment implements Node {
-    id: Int!
-    amount: Int!
-    method: String!
-    createdAt: DateTime!
-    updatedAt: DateTime!
-    admission: Admission!
+  id: Int!
+  amount: Int!
+  method: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  admission: Admission!
+}
+type RevenueStats {
+  month: String!
+  a: Int!
+  b: Int!
+  year: Int!
+  totalrevenue: Int!
 }
 
 type PaymentList implements PaginatedList {
-    items: [Payment!]!
-    totalItems: Int!
+  items: [Payment!]!
+  totalItems: Int!
 }

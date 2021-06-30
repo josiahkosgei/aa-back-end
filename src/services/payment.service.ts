@@ -9,6 +9,7 @@ import {
 } from '../graphql-types';
 import { PaginatedList, ListQueryOptions } from '../lib/common-types';
 import { patchEntity } from '../lib/patch-entity';
+import { RevenueStats } from '../resolvers/dto/revenue-stats';
 
 @Injectable()
 export class PaymentService {
@@ -71,5 +72,22 @@ export class PaymentService {
         message: e.toString(),
       };
     }
+  }
+  async getRevenueStats(): Promise<Array<RevenueStats>> {
+    const result: RevenueStats[] = await this.connection.getRepository(Payment)
+      .query(`select 
+      ROW_NUMBER () OVER (ORDER BY t.month) as a,
+      t.year,
+      t.month,
+      t.revenue as b,
+      sum(t.revenue) OVER (PARTITION BY t.year
+                               ORDER BY t.year) AS totalrevenue
+      from (
+      SELECT (to_char("createdAt", 'YYYY')) as year,(to_char("createdAt", 'YYYY-MM')) as month,SUM(amount) as revenue
+      FROM payment
+      GROUP BY (to_char("createdAt", 'YYYY-MM')),(to_char("createdAt", 'YYYY'))
+      Order by max("createdAt")
+      ) as t`);
+    return result;
   }
 }

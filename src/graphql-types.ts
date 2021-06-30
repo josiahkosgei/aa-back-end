@@ -1,3 +1,4 @@
+
 /*
  * ------------------------------------------------------
  * THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
@@ -184,6 +185,8 @@ export abstract class IQuery {
 
     abstract payments(options?: PaymentListOptions): PaymentList | Promise<PaymentList>;
 
+    abstract revenueStats(options?: PaymentListOptions): RevenueStats[] | Promise<RevenueStats[]>;
+
     abstract payment(id: number): Payment | Promise<Payment>;
 
     abstract users(options?: UserListOptions): UserList | Promise<UserList>;
@@ -322,6 +325,14 @@ export class Payment implements Node {
     createdAt: DateTime;
     updatedAt: DateTime;
     admission: Admission;
+}
+
+export class RevenueStats {
+    month: string;
+    a: number;
+    b: number;
+    year: number;
+    totalrevenue: number;
 }
 
 export class PaymentList implements PaginatedList {

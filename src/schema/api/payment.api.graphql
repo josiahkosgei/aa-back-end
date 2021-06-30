@@ -1,5 +1,6 @@
 type Query {
   payments(options: PaymentListOptions): PaymentList!
+  revenueStats(options: PaymentListOptions): [RevenueStats!]!
   payment(id: Int!): Payment
 }
 
