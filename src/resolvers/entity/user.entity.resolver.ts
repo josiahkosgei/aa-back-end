@@ -8,20 +8,20 @@ export class UserEntityResolver {
   constructor(private connection: Connection) {}
 
   @ResolveField()
-  async userComplaints(@Parent() userEntity: User) {
-    let userComplaints: Complaint[] | null = userEntity.userComplaints;
-    if (!userComplaints) {
+  async assignedComplaints(@Parent() userEntity: User) {
+    let assignedComplaints: Complaint[] | null = userEntity.assignedComplaints;
+    if (!assignedComplaints) {
       const userWithAssignedUser = await this.connection
         .getRepository(User)
         .findOne(userEntity.id, {
-          relations: ['userComplaints'],
+          relations: ['assignedComplaints'],
         });
       if (userWithAssignedUser) {
-        userComplaints = userWithAssignedUser.userComplaints;
+        assignedComplaints = userWithAssignedUser.assignedComplaints;
       }
     }
-    if (userComplaints) {
-      return userComplaints;
+    if (assignedComplaints) {
+      return assignedComplaints;
     }
   }
 }

@@ -172,6 +172,8 @@ export abstract class IQuery {
 
     abstract customerResponses(options?: CustomerResponseListOptions): CustomerResponseList | Promise<CustomerResponseList>;
 
+    abstract userStats(options?: CustomerResponseListOptions): UserStats[] | Promise<UserStats[]>;
+
     abstract customerResponse(id: number): CustomerResponse | Promise<CustomerResponse>;
 
     abstract hospitals(options?: HospitalListOptions): HospitalList | Promise<HospitalList>;
@@ -280,6 +282,14 @@ export class CustomerResponse implements Node {
     complaint: Complaint;
 }
 
+export class UserStats {
+    name: string;
+    nps: number;
+    reportedissues: number;
+    efficiency: number;
+    completed: number;
+}
+
 export class CustomerResponseList implements PaginatedList {
     items: CustomerResponse[];
     totalItems: number;
@@ -324,7 +334,7 @@ export class User implements Node {
     name: string;
     createdAt: DateTime;
     updatedAt: DateTime;
-    userComplaints: Complaint[];
+    assignedComplaints: Complaint[];
 }
 
 export class UserList implements PaginatedList {

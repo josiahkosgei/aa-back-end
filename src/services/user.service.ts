@@ -18,7 +18,7 @@ export class UserService {
     return this.connection
       .getRepository(User)
       .findAndCount({
-        relations: ['userComplaints'],
+        relations: ['assignedComplaints'],
       })
       .then(([items, totalItems]) => ({
         items,
@@ -28,7 +28,7 @@ export class UserService {
 
   findOne(userId: number): Promise<User | undefined> {
     return this.connection.getRepository(User).findOne(userId, {
-      relations: ['userComplaints'],
+      relations: ['assignedComplaints'],
     });
   }
 

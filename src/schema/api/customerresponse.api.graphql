@@ -1,5 +1,6 @@
 type Query {
   customerResponses(options: CustomerResponseListOptions): CustomerResponseList!
+  userStats(options: CustomerResponseListOptions): [UserStats!]!
   customerResponse(id: Int!): CustomerResponse
 }
 

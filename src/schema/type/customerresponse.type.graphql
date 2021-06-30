@@ -6,6 +6,14 @@ type CustomerResponse implements Node {
     complaint: Complaint!
 }
 
+type UserStats {
+  name: String!
+  nps: Int!
+  reportedissues: Int!
+  efficiency: Int!
+  completed: Int!
+}
+
 type CustomerResponseList implements PaginatedList {
     items: [CustomerResponse!]!
     totalItems: Int!

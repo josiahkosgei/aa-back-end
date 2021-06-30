@@ -3,7 +3,7 @@ type User implements Node {
     name: String!
     createdAt: DateTime!
     updatedAt: DateTime!
-    userComplaints: [Complaint!]!
+    assignedComplaints: [Complaint!]!
 }
 
 type UserList implements PaginatedList {

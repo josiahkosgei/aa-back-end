@@ -30,7 +30,7 @@ export class Complaint extends BaseEntity {
   @Column()
   assignedUserId: number;
 
-  @ManyToOne(() => User, (userEntity) => userEntity.userComplaints)
+  @ManyToOne(() => User, (userEntity) => userEntity.assignedComplaints)
   @JoinColumn({ name: 'assignedUserId' })
   assignedUser: User;
 

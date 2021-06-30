@@ -21,5 +21,5 @@ export class User extends BaseEntity {
   email: string;
 
   @OneToMany(() => Complaint, (complaintEntity) => complaintEntity.assignedUser)
-  userComplaints: Complaint[];
+  assignedComplaints: Complaint[];
 }
