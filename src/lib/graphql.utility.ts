@@ -63,7 +63,7 @@ async function buildGraphQLOptions(
     introspection: options.introspection,
     context: (req: any) => req,
     cors: {
-      origin: 'http://localhost:3000',
+      origin: 'https://analytics-app-aa.herokuapp.com',
       methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
       allowedHeaders: 'Content-Type, Accept',
     },

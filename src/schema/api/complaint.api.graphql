@@ -1,6 +1,10 @@
-type Query {
+type Query {  
+  "Get all issues"
   complaints(options: ComplaintListOptions): ComplaintList!
+  "Get issues stats"
   keyComplaintsStats(options: ComplaintListOptions): [KeyComplaintsStats!]!
+  
+  "Get specific Issue"
   complaint(id: Int!): Complaint
 }
 

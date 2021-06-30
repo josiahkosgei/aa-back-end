@@ -1,4 +1,3 @@
-
 /*
  * ------------------------------------------------------
  * THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
@@ -99,6 +98,7 @@ export class UserListOptions {
 
 export class CreateUserInput {
     name: string;
+    email: string;
 }
 
 export class UpdateUserInput {

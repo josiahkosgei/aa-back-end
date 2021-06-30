@@ -24,6 +24,8 @@ import { CustomerResponseEntityResolver } from './resolvers/entity/customer-resp
 import { CustomerResponseService } from './services/customer-response.service';
 import { CustomerResponse } from './entities/customer-response.entity';
 
+const ENV = process.env.NODE_ENV;
+
 const apiResolvers = [
   ComplaintResolver,
   HospitalResolver,

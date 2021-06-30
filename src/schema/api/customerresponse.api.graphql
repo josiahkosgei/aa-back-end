@@ -1,6 +1,9 @@
 type Query {
-  customerResponses(options: CustomerResponseListOptions): CustomerResponseList!
+  "Get all responses"
+  customerResponses(options: CustomerResponseListOptions): CustomerResponseList!  
+  "Get responsees stats"
   userStats(options: CustomerResponseListOptions): [UserStats!]!
+  "Get specific response"
   customerResponse(id: Int!): CustomerResponse
 }
 

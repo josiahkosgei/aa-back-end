@@ -1,6 +1,11 @@
 type Query {
+  "Get all payments"
   payments(options: PaymentListOptions): PaymentList!
+  
+  "Get revenue stats"
   revenueStats(options: PaymentListOptions): [RevenueStats!]!
+  
+  "Get specific payment"
   payment(id: Int!): Payment
 }
 

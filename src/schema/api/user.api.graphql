@@ -1,5 +1,8 @@
 type Query {
+  
+  "Get all users"
   users(options: UserListOptions): UserList!
+  "Get specific user"
   user(id: Int!): User
 }
 
@@ -17,6 +20,7 @@ input UserListOptions
 
 input CreateUserInput {
     name: String!
+    email: String!
 }
 
 input UpdateUserInput {

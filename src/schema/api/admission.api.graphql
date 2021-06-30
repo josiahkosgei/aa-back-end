@@ -1,14 +1,16 @@
 type Query {
+  "Get all Hospital Admissions/Visits"
   admissions(options: AdmissionListOptions): AdmissionList!
+  "Get specific Hospital Admission/Visit"
   admission(id: Int!): Admission
 }
 
 type Mutation {
-  "Create a new Admission"
+  "Create a new Admission/Visit"
   createAdmission(input: CreateAdmissionInput!): Admission!
-  "Update an existing Admission"
+  "Update an existing Admission/Visit"
   updateAdmission(input: UpdateAdmissionInput!): Admission!
-  "Delete a Admission"
+  "Delete a Admission/Visit"
   deleteAdmission(id: Int!): DeletionResponse!
 }
 

@@ -1,6 +1,10 @@
 type Query {
-  hospitals(options: HospitalListOptions): HospitalList!
-  hospitalsWithStats(options: HospitalListOptions): [HospitalStats!]!
+  
+  "Get all hospitals"
+  hospitals(options: HospitalListOptions): HospitalList!  
+  "Get hospital stats"
+  hospitalsWithStats(options: HospitalListOptions): [HospitalStats!]!  
+  "Get specific hospital"
   hospital(id: Int!): Hospital
 }
 
